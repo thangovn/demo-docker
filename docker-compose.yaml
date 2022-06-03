@@ -1,14 +1,10 @@
-version: "3.8"
 services:
-  app:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: test
+  client:
+    build: .
+    image: kamalhossain/react-counter-app-client
+    restart: always
     ports:
-      - "3000:3000"
-    stdin_open: true
-    tty: true
+      - "80:80"
     volumes:
-      - /app/node_modules
-      - .:/app
+      - /usr/src/app/node_modules
+      - ./services/client:/usr/src/app
